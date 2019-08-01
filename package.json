@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": ">12"
+  },
   "name": "@ussu/bowti",
   "version": "0.1.0",
   "main": "index.js",
@@ -29,6 +32,7 @@
     "dev": "`yarn bin`/tsc -w",
     "prepare": "`yarn bin`/tsc",
     "format": "`yarn bin`/prettier --write \"src/**/*.{ts,tsx}\"",
-    "test": "`yarn bin`/jest"
+    "test": "`yarn bin`/jest",
+    "start": "node lib/service.js"
   }
 }
