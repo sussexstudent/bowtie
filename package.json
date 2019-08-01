@@ -31,6 +31,7 @@
   "scripts": {
     "dev": "`yarn bin`/tsc -w",
     "prepare": "`yarn bin`/tsc",
+    "build": "`yarn bin`/tsc",
     "format": "`yarn bin`/prettier --write \"src/**/*.{ts,tsx}\"",
     "test": "`yarn bin`/jest",
     "start": "node lib/service.js"
