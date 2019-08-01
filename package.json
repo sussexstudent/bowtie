@@ -2,9 +2,9 @@
   "engines": {
     "node": "^12"
   },
-  "name": "@ussu/bowti",
-  "version": "0.1.0",
-  "main": "index.js",
+  "name": "@ussu/bowtie",
+  "version": "0.2.0",
+  "main": "lib/service.js",
   "repository": "https://github.com/sussexstudent/bowtie.git",
   "author": "James Canning <james@brudil.com>",
   "license": "MIT",
