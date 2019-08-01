@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node": ">12"
+    "node": "^12"
   },
   "name": "@ussu/bowti",
   "version": "0.1.0",
