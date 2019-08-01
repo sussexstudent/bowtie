@@ -32,7 +32,7 @@ const init = async () => {
   });
 
   const server = new Hapi.Server({
-    host: 'sso.sussexstudent.com',
+    host: '0.0.0.0',
     port: process.env.PORT || 8006,
   });
 
