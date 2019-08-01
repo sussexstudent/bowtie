@@ -4,31 +4,8 @@ import * as Hapi from '@hapi/hapi';
 import * as validator from '@authenio/samlify-xsd-schema-validator';
 import * as jwt from 'jsonwebtoken';
 import * as uuidv4 from 'uuid/v4';
-import * as https from 'https';
 
 import { loadParams } from './keys';
-
-const greenlock = require('greenlock-hapi').create({
-  version: 'draft-11', // Let's Encrypt v2
-  // You MUST change this to 'https://acme-v02.api.letsencrypt.org/directory' in production
-  server: 'https://acme-staging-v02.api.letsencrypt.org/directory',
-
-  email: 'website@sussexstudent.com',
-  agreeTos: true,
-  approveDomains: ['sso.sussexstudent.com'],
-
-  // Join the community to get notified of important updates
-  // and help make greenlock better
-  communityMember: true,
-
-  configDir: require('os').homedir() + '/acme/etc',
-
-  store: require('greenlock-store-fs'),
-  //, debug: true
-});
-
-const httpsServer = https.createServer(greenlock.httpsOptions).listen(443);
-const acmeResponder = greenlock.middleware();
 
 saml.setSchemaValidator(validator);
 const init = async () => {
@@ -56,9 +33,7 @@ const init = async () => {
 
   const server = new Hapi.Server({
     host: 'sso.sussexstudent.com',
-    listener: httpsServer,
-    autoListen: false,
-    tls: true,
+    port: process.env.PORT || 8006,
   });
 
   server.route({
@@ -75,17 +50,6 @@ const init = async () => {
     path: '/metadata',
     handler: (_request, h) => {
       return h.response(sp.getMetadata()).type('text/xml');
-    },
-  });
-
-  server.route({
-    method: 'GET',
-    path: '/.well-known/acme-challenge',
-    handler: function(request) {
-      var req = request.raw.req;
-      var res = request.raw.res;
-
-      acmeResponder(req, res);
     },
   });
 
@@ -128,12 +92,3 @@ process.on('unhandledRejection', (err) => {
 });
 
 init();
-
-var http = require('http');
-var redirectHttps = require('redirect-https')();
-
-http.createServer(greenlock.middleware(redirectHttps)).listen(80, function() {
-  console.log(
-    'Listening on port 80 to handle ACME http-01 challenge and redirect to https',
-  );
-});
