@@ -1,0 +1,34 @@
+{
+  "name": "@ussu/bowti",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "https://github.com/sussexstudent/bowtie.git",
+  "author": "James Canning <james@brudil.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/hapi__hapi": "^18.2.5",
+    "@types/jsonwebtoken": "^8.3.2",
+    "@types/node": "^12.6.8",
+    "@types/uuid": "^3.4.5",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "@authenio/samlify-xsd-schema-validator": "^1.0.2",
+    "@hapi/hapi": "^18.3.1",
+    "aws-sdk": "^2.503.0",
+    "dotenv": "^8.0.0",
+    "greenlock-express": "^2.7.12",
+    "greenlock-hapi": "2.x",
+    "greenlock-store-fs": "3",
+    "jsonwebtoken": "^8.5.1",
+    "redirect-https": "^1.3.0",
+    "samlify": "^2.6.0",
+    "uuid": "^3.3.2"
+  },
+  "scripts": {
+    "dev": "`yarn bin`/tsc -w",
+    "prepare": "`yarn bin`/tsc",
+    "format": "`yarn bin`/prettier --write \"src/**/*.{ts,tsx}\"",
+    "test": "`yarn bin`/jest"
+  }
+}
