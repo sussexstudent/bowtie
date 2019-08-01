@@ -99,13 +99,12 @@ const init = async () => {
                 body: request.payload,
                 query: request.query,
             });
-            console.log(response);
+
             var token = jwt.sign({
                 id: response.extract.nameID,
                 jwtid: uuidv4(),
             }, passoffSecret, { expiresIn: '60s' });
             
-            console.log(`${process.env.FALMER_ENDPOINT}/auth/sso?token=${token}`);
             return h.redirect(`${process.env.FALMER_ENDPOINT}/auth/sso?token=${token}`)
         } catch (e) {
             console.error(e);
