@@ -13,6 +13,7 @@
     "@types/jsonwebtoken": "^8.3.2",
     "@types/node": "^12.6.8",
     "@types/uuid": "^3.4.5",
+    "prettier": "^1.18.2",
     "typescript": "^3.5.3"
   },
   "dependencies": {
@@ -35,5 +36,16 @@
     "format": "`yarn bin`/prettier --write \"src/**/*.{ts,tsx}\"",
     "test": "`yarn bin`/jest",
     "start": "node lib/service.js"
-  }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "always"
+}
 }
