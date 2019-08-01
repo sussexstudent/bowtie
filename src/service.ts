@@ -55,7 +55,7 @@ const init = async () => {
       });
 
     const server = new Hapi.Server({
-        host: 'localhost',
+        host: 'sso.sussexstudent.com',
         listener: httpsServer,
         autoListen: false,
         tls: true        
